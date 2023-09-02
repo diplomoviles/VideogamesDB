@@ -12,6 +12,10 @@ class GameRepository(private val gameDao: GameDao) {
         gameDao.insertGame(game)
     }
 
+    suspend fun insertGame(title: String, genre: String, developer: String){
+        gameDao.insertGame(GameEntity(title = title, genre = genre, developer = developer))
+    }
+
     suspend fun getAllGames(): List<GameEntity> = gameDao.getAllGames()
 
     suspend fun updateGame(game: GameEntity){

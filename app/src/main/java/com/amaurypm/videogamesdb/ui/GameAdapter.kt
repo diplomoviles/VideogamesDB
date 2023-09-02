@@ -10,7 +10,7 @@ import com.amaurypm.videogamesdb.databinding.GameElementBinding
 /**
  * Creado por Amaury Perea Matsumura el 26/08/23
  */
-class GameAdapter(): RecyclerView.Adapter<GameAdapter.ViewHolder>() {
+class GameAdapter(private val onGameClick: (GameEntity) -> Unit): RecyclerView.Adapter<GameAdapter.ViewHolder>() {
 
     private var games: List<GameEntity> = emptyList()
 
@@ -44,7 +44,7 @@ class GameAdapter(): RecyclerView.Adapter<GameAdapter.ViewHolder>() {
 
         holder.itemView.setOnClickListener {
             //Aquí va el click del elemento
-
+            onGameClick(games[position])
         }
 
         holder.ivIcon.setOnClickListener {
