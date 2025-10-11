@@ -40,11 +40,15 @@ class MainActivity : AppCompatActivity() {
 
         gameAdapter = GameAdapter{ selectedGame ->
             //Click a cada juego dado de alta
-            Toast.makeText(
+            /*Toast.makeText(
                 this,
                 "Click en el juego: ${selectedGame.title}",
                 Toast.LENGTH_SHORT
-            ).show()
+            ).show()*/
+            val dialog = GameDialog(newGame = false, game = selectedGame){
+                updateUI()
+            }
+            dialog.show(supportFragmentManager, "dialog2")
         }
 
         /*binding.rvGames.layoutManager = LinearLayoutManager(this)
@@ -85,7 +89,9 @@ class MainActivity : AppCompatActivity() {
             repository.insertGame(game)
         }*/
 
-        val dialog = GameDialog()
+        val dialog = GameDialog{
+            updateUI()
+        }
         dialog.show(supportFragmentManager, "dialog1")
 
     }
