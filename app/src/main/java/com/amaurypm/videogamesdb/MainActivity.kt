@@ -14,6 +14,7 @@ import com.amaurypm.videogamesdb.data.GameRepository
 import com.amaurypm.videogamesdb.data.db.model.GameEntity
 import com.amaurypm.videogamesdb.databinding.ActivityMainBinding
 import com.amaurypm.videogamesdb.ui.GameAdapter
+import com.amaurypm.videogamesdb.ui.GameDialog
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 
     fun click(view: View) {
         //Click del Floating action button
-        val i = Random.nextInt(0, 100)
+        /*val i = Random.nextInt(0, 100)
 
         val game = GameEntity(
             title = "Juego $i",
@@ -82,7 +83,10 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             repository.insertGame(game)
-        }
+        }*/
+
+        val dialog = GameDialog()
+        dialog.show(supportFragmentManager, "dialog1")
 
     }
 }
